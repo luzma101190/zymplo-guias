@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Zymplo · Cómo salir del rechazo de Google Play</title>
+<style>
+  :root {
+    --bg: #f7faf9;
+    --surface: #ffffff;
+    --ink: #10201c;
+    --ink-2: #45605a;
+    --ink-3: #6e8781;
+    --line: #dbe7e4;
+    --accent: #0e9384;
+    --accent-ink: #0b6e63;
+    --accent-soft: #e2f4f0;
+    --bad: #b3402f;
+    --bad-soft: #faeae6;
+    --good: #2e7d4f;
+    --good-soft: #e6f3ea;
+    --mono-bg: #eef4f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1514;
+      --surface: #161d1c;
+      --ink: #e8f0ee;
+      --ink-2: #a8bcb7;
+      --ink-3: #7d938d;
+      --line: #263230;
+      --accent: #2fc4b2;
+      --accent-ink: #4fd8c7;
+      --accent-soft: #14302c;
+      --bad: #e07a68;
+      --bad-soft: #33201c;
+      --good: #6cc493;
+      --good-soft: #1a2e22;
+      --mono-bg: #1c2624;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1514; --surface: #161d1c; --ink: #e8f0ee; --ink-2: #a8bcb7;
+    --ink-3: #7d938d; --line: #263230; --accent: #2fc4b2; --accent-ink: #4fd8c7;
+    --accent-soft: #14302c; --bad: #e07a68; --bad-soft: #33201c;
+    --good: #6cc493; --good-soft: #1a2e22; --mono-bg: #1c2624;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7faf9; --surface: #ffffff; --ink: #10201c; --ink-2: #45605a;
+    --ink-3: #6e8781; --line: #dbe7e4; --accent: #0e9384; --accent-ink: #0b6e63;
+    --accent-soft: #e2f4f0; --bad: #b3402f; --bad-soft: #faeae6;
+    --good: #2e7d4f; --good-soft: #e6f3ea; --mono-bg: #eef4f2;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 20px 96px;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-ink); font-weight: 700; margin: 48px 0 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 38px); line-height: 1.15; margin: 0 0 12px;
+    letter-spacing: -0.02em; text-wrap: balance;
+  }
+  .lede { font-size: 17px; color: var(--ink-2); max-width: 62ch; margin: 0 0 8px; }
+  .meta { font-size: 13px; color: var(--ink-3); margin-bottom: 40px; }
+
+  h2 {
+    font-size: 21px; letter-spacing: -0.01em; margin: 0 0 4px; text-wrap: balance;
+  }
+  h3 { font-size: 15px; margin: 20px 0 6px; }
+  p { margin: 10px 0; max-width: 68ch; }
+  li { margin: 6px 0; }
+  strong { color: var(--ink); }
+
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin: 0 0 18px;
+  }
+  .step-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+  .step-num {
+    flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+    transform: translateY(4px);
+  }
+  :root[data-theme="dark"] .step-num, .dark-num { color: #06211d; }
+  @media (prefers-color-scheme: dark) { .step-num { color: #06211d; } }
+  :root[data-theme="light"] .step-num { color: #fff; }
+  .step-time { font-size: 12px; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
+
+  .tablewrap { overflow-x: auto; margin: 14px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th {
+    text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-3); font-weight: 700; padding: 8px 12px 6px;
+    border-bottom: 2px solid var(--line);
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+
+  code, .path {
+    font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    background: var(--mono-bg);
+    padding: 2px 7px; border-radius: 5px;
+  }
+  .path { color: var(--accent-ink); font-weight: 600; }
+
+  .callout {
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+    font-size: 14.5px; border: 1px solid transparent;
+  }
+  .callout.bad  { background: var(--bad-soft);  border-color: color-mix(in srgb, var(--bad) 30%, transparent); }
+  .callout.good { background: var(--good-soft); border-color: color-mix(in srgb, var(--good) 30%, transparent); }
+  .callout.info { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .callout .tag { font-weight: 700; letter-spacing: 0.06em; font-size: 11.5px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .callout.bad .tag  { color: var(--bad); }
+  .callout.good .tag { color: var(--good); }
+  .callout.info .tag { color: var(--accent-ink); }
+
+  .pill {
+    display: inline-block; font-size: 11.5px; font-weight: 700;
+    padding: 2px 10px; border-radius: 999px; letter-spacing: 0.04em;
+  }
+  .pill.no  { background: var(--bad-soft);  color: var(--bad); }
+  .pill.ok  { background: var(--good-soft); color: var(--good); }
+
+  .checklist { list-style: none; padding: 0; margin: 12px 0; }
+  .checklist li {
+    padding: 9px 0 9px 34px; position: relative; border-bottom: 1px solid var(--line);
+  }
+  .checklist li::before {
+    content: ""; position: absolute; left: 2px; top: 13px;
+    width: 16px; height: 16px; border-radius: 4px;
+    border: 2px solid var(--accent);
+  }
+  .footer-note { font-size: 13px; color: var(--ink-3); margin-top: 40px; border-top: 1px solid var(--line); padding-top: 16px; }
+  a { color: var(--accent-ink); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Zymplo · Google Play · com.zymplo.app</p>
+  <h1>Cómo salir del rechazo de Google Play, paso a paso</h1>
+  <p class="lede">El 28/07 Google rechazó la app por la <strong>Metadata policy</strong> ("Unclear Visuals"). No es un problema del APK: son 4 capturas de la ficha de la tienda que no muestran la app real. Se corrige la ficha, se reenvía, y la re-revisión suele tardar 1–3 días.</p>
+  <p class="meta">Preparado el 28/07/2026 · Rechazo del listing pt-BR · El build en internal testing (vc34) no se ve afectado.</p>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <h2>Entender qué rechazó Google (y por qué tiene razón)</h2>
+    </div>
+    <p>El mail "Action Required" marca 4 imágenes del listing en portugués. Ninguna muestra la experiencia real de uso:</p>
+    <div class="tablewrap">
+      <table>
+        <tr><th>Archivo</th><th>Qué es</th><th>Por qué viola la política</th></tr>
+        <tr><td><code>APP_SCREENSHOT-7059</code></td><td>Logo "Zy" sobre fondo turquesa</td><td>Imagen genérica/vacía: no muestra ninguna funcionalidad</td></tr>
+        <tr><td><code>APP_SCREENSHOT-138</code></td><td>Mockup de chat de WhatsApp ("Gastei 50 no supermercado")</td><td>Muestra la interfaz de <strong>otra marca</strong> (WhatsApp), no nuestra app</td></tr>
+        <tr><td><code>APP_SCREENSHOT-6168</code></td><td>Mockup de chat de WhatsApp ("João me deve R$ 200")</td><td>Ídem: "unneeded mentions of other apps/brands"</td></tr>
+        <tr><td><code>APP_SCREENSHOT-6790</code></td><td>Tabla "Planos Zymplo" con precios</td><td>Solo precios: no transmite funcionalidad ni experiencia</td></tr>
+      </table>
+    </div>
+    <div class="callout info">
+      <span class="tag">Decisión</span>
+      No apelar. El rechazo es correcto y la apelación tarda hasta 7 días. Corregir y reenviar es más rápido y seguro.
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <h2>Preparar la cuenta demo con datos presentables</h2>
+      <span class="step-time">~10 min</span>
+    </div>
+    <p>Antes de capturar, dejar una empresa de prueba con datos que se vean bien en pantalla. La app en <strong>portugués</strong> (el listing rechazado es pt-BR, las capturas tienen que coincidir).</p>
+    <ul>
+      <li>Nombres de clientes reales-creíbles (João, Maria, Ana) — nada de "test" ni "asdf".</li>
+      <li>4–6 movimientos financieros con montos redondos en R$ (R$ 150, R$ 480…).</li>
+      <li>Al menos una cobrança pendiente con recordatorio configurado.</li>
+      <li>El gráfico del dashboard con actividad en varios días de la semana.</li>
+      <li>Una conversación con Zy en el chat de la app: pregunta del usuario + respuesta útil de Zy (registrar un gasto o un cobro es lo más vistoso).</li>
+    </ul>
+    <div class="callout info">
+      <span class="tag">Atajo</span>
+      El modo demo de la app (Perfil → 🎬 Modo demo) ya trae datos armados y sirve exactamente para esto.
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <h2>Capturar 6–8 pantallas reales</h2>
+      <span class="step-time">~20 min</span>
+    </div>
+    <p>Desde el emulador de Android Studio o un device físico. La captura nativa ya sale en resolución válida. Shot list sugerida, en este orden:</p>
+    <div class="tablewrap">
+      <table>
+        <tr><th>#</th><th>Pantalla</th><th>Qué tiene que verse</th></tr>
+        <tr><td>1</td><td>Chat de Zy (en la app)</td><td>Conversación real dentro de la app: reemplaza los mockups de WhatsApp sin mostrar marca ajena</td></tr>
+        <tr><td>2</td><td>Home / dashboard</td><td>Resumen del día, gráfico semanal con datos</td></tr>
+        <tr><td>3</td><td>Nuevo cobro / recibo</td><td>El flujo core, con monto y cliente cargados</td></tr>
+        <tr><td>4</td><td>Financeiro</td><td>Lista de movimientos con valores</td></tr>
+        <tr><td>5</td><td>Cobrança con lembretes</td><td>Detalle de una cobrança pendiente y sus recordatorios</td></tr>
+        <tr><td>6</td><td>Clientes</td><td>Lista con 4–6 clientes</td></tr>
+        <tr><td>7 (opc.)</td><td>Emisión NFS-e</td><td>Diferenciador para Brasil</td></tr>
+        <tr><td>8 (opc.)</td><td>Perfil / metas</td><td>Progreso de meta mensual</td></tr>
+      </table>
+    </div>
+    <h3>Especificaciones técnicas de Google Play</h3>
+    <ul>
+      <li>PNG o JPEG · relación 9:16 (vertical) · entre 320 px y 3840 px por lado.</li>
+      <li>Recomendado: 1080 × 1920 o superior. Mínimo 2 capturas, máximo 8.</li>
+      <li>Se permite marco de celular y un caption corto arriba ("Cobre pelo chat", "Suas finanças em um lugar") <strong>siempre que la UI real domine la imagen</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <h2>Reglas de oro para que no vuelva a rebotar</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <tr><th></th><th>Regla</th></tr>
+        <tr><td><span class="pill no">Nunca</span></td><td>Logo solo, splash screen o imagen de marca sin UI</td></tr>
+        <tr><td><span class="pill no">Nunca</span></td><td>Interfaz de WhatsApp o cualquier otra app/marca ajena</td></tr>
+        <tr><td><span class="pill no">Nunca</span></td><td>Pantallas que sean solo precios o planes</td></tr>
+        <tr><td><span class="pill no">Nunca</span></td><td>Mockups dibujados que no correspondan a la app real</td></tr>
+        <tr><td><span class="pill ok">Siempre</span></td><td>UI real de la app, con datos creíbles, en el idioma del listing</td></tr>
+        <tr><td><span class="pill ok">Siempre</span></td><td>Título y descripción que describan lo que la app efectivamente hace</td></tr>
+        <tr><td><span class="pill ok">Siempre</span></td><td>Mismo criterio en el feature graphic y en el ícono</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <h2>Reemplazar las imágenes en Play Console</h2>
+      <span class="step-time">~10 min</span>
+    </div>
+    <p>Con la cuenta que tiene permisos de edición sobre la app:</p>
+    <ol>
+      <li>Entrar a <span class="path">Play Console → Zymplo · cobros y facturas</span>.</li>
+      <li>Ir a <span class="path">Crecimiento → Presencia en la tienda → Ficha principal de la tienda</span> (Store presence → Main store listing).</li>
+      <li>Seleccionar el idioma <strong>pt-BR</strong>.</li>
+      <li>En "Capturas de pantalla del teléfono": <strong>eliminar las 4 rechazadas</strong> y subir el set nuevo completo. No dejar ninguna de las viejas.</li>
+      <li>Revisar en la misma página el <strong>feature graphic</strong> (banner 1024×500): si es solo logo, reemplazarlo por uno que combine logo + pantalla real de la app.</li>
+      <li>Repetir la revisión en <strong>todos los demás idiomas</strong> de la ficha (el aviso de Google dice "this issue may also be found in other locations").</li>
+      <li>Guardar los cambios.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <h2>Reenviar a revisión</h2>
+      <span class="step-time">~2 min</span>
+    </div>
+    <ol>
+      <li>Ir a <span class="path">Panel de publicación</span> (Publishing overview), arriba a la derecha del menú lateral.</li>
+      <li>Verificar que los cambios de la ficha aparezcan listados como "Cambios listos para enviar".</li>
+      <li>Tocar <strong>"Enviar para revisión"</strong> (Send for review).</li>
+    </ol>
+    <div class="callout good">
+      <span class="tag">Qué esperar</span>
+      La re-revisión después de un rechazo suele tardar 1–3 días (menos que la primera). El build vc34 en internal testing queda intacto: esto es solo metadata, no hay que recompilar nada.
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <h2>Checklist final antes de enviar</h2>
+    </div>
+    <ul class="checklist">
+      <li>6–8 capturas nuevas subidas en pt-BR, todas de UI real, app en portugués</li>
+      <li>Cero imágenes de logo solo, WhatsApp o precios en toda la ficha</li>
+      <li>Feature graphic revisado (no es solo logo)</li>
+      <li>Otros idiomas de la ficha revisados con el mismo criterio</li>
+      <li>Título y descripciones describen la funcionalidad real</li>
+      <li>Enviado desde Publishing overview → "Send for review"</li>
+      <li>Guardar el set nuevo de capturas: sirve también para renovar App Store (iOS) y evitar la misma observación de Apple</li>
+    </ul>
+  </div>
+
+  <p class="footer-note">Si vuelve a rechazar: leer el detalle nuevo en <span class="path">Policy status → Issue details</span> antes de tocar nada — un segundo rechazo casi siempre trae un motivo distinto (no insistas con el mismo fix). Rechazos repetidos de la misma política pueden escalar a restricciones de la cuenta, así que al segundo rebote conviene revisar la ficha completa con calma.</p>
+</main>
+</body>
+</html>
