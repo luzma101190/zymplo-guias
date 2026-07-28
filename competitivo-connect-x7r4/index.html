@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Zymplo · Análisis competitivo BR — Nibo · MaisMEI · ContaAzul · Bling</title>
+<style>
+  :root {
+    --bg: #f7faf9; --surface: #ffffff; --ink: #10201c; --ink-2: #45605a;
+    --ink-3: #6e8781; --line: #dbe7e4; --accent: #0e9384; --accent-ink: #0b6e63;
+    --accent-soft: #e2f4f0; --warn: #a06a12; --warn-soft: #fdf3e0;
+    --bad: #b3402f; --bad-soft: #faeae6; --good: #2e7d4f; --good-soft: #e6f3ea;
+    --mono-bg: #eef4f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1514; --surface: #161d1c; --ink: #e8f0ee; --ink-2: #a8bcb7;
+      --ink-3: #7d938d; --line: #263230; --accent: #2fc4b2; --accent-ink: #4fd8c7;
+      --accent-soft: #14302c; --warn: #e0b25e; --warn-soft: #302713;
+      --bad: #e07a68; --bad-soft: #33201c; --good: #6cc493; --good-soft: #1a2e22;
+      --mono-bg: #1c2624;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6; margin: 0; padding: 0 20px 96px;
+  }
+  main { max-width: 860px; margin: 0 auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); font-weight: 700; margin: 44px 0 10px; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.02em; text-wrap: balance; }
+  .lede { font-size: 16.5px; color: var(--ink-2); max-width: 70ch; margin: 0 0 6px; }
+  .meta { font-size: 13px; color: var(--ink-3); margin-bottom: 34px; }
+  h2 { font-size: 21px; margin: 40px 0 10px; letter-spacing: -.01em; }
+  h3 { font-size: 16px; margin: 22px 0 6px; }
+  p { margin: 10px 0; max-width: 74ch; }
+  li { margin: 6px 0; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; margin: 14px 0; }
+  .tablewrap { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 700; padding: 8px 10px 6px; border-bottom: 2px solid var(--line); }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td:first-child { font-weight: 600; }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .callout { border-radius: 8px; padding: 13px 17px; margin: 14px 0; font-size: 14.5px; border: 1px solid transparent; }
+  .callout.key { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 32%, transparent); }
+  .callout.warn { background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 32%, transparent); }
+  .callout .tag { font-weight: 700; letter-spacing: .06em; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .callout.key .tag { color: var(--accent-ink); }
+  .callout.warn .tag { color: var(--warn); }
+  .pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; letter-spacing: .03em; white-space: nowrap; }
+  .pill.win { background: var(--good-soft); color: var(--good); }
+  .pill.money { background: var(--warn-soft); color: var(--warn); }
+  .pill.strat { background: var(--accent-soft); color: var(--accent-ink); }
+  .ok { color: var(--good); font-weight: 700; }
+  .no { color: var(--bad); font-weight: 700; }
+  .mid { color: var(--warn); font-weight: 700; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin: 10px 0; }
+  details > summary { cursor: pointer; padding: 14px 20px; font-weight: 700; font-size: 15px; list-style: none; display: flex; align-items: center; gap: 10px; }
+  details > summary::before { content: "▸"; color: var(--accent-ink); transition: transform .15s; }
+  details[open] > summary::before { transform: rotate(90deg); }
+  @media (prefers-reduced-motion: reduce) { details > summary::before { transition: none; } }
+  details > .body { padding: 0 22px 18px; }
+  .src { font-size: 12px; color: var(--ink-3); }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .88em; background: var(--mono-bg); padding: 1px 6px; border-radius: 5px; }
+  .footer-note { font-size: 12.5px; color: var(--ink-3); margin-top: 44px; border-top: 1px solid var(--line); padding-top: 14px; }
+  a { color: var(--accent-ink); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Zymplo · Estrategia BR · uso interno</p>
+  <h1>Zymplo vs Nibo · MaisMEI · ContaAzul · Bling</h1>
+  <p class="lede">Análisis competitivo del ecosistema Zymplo (app + bot Zy + Connect) contra los 4 jugadores relevantes de Brasil, para identificar oportunidades de mejora. Precios y datos relevados en julio 2026 de fuentes públicas (sitios oficiales, Reclame Aqui, stores).</p>
+  <p class="meta">Preparado el 28/07/2026 · Para Carlos y Víctor · Resumen ejecutivo primero, detalle por competidor al final.</p>
+
+  <div class="callout key">
+    <span class="tag">El insight central</span>
+    <strong>Nadie más juega los dos tableros a la vez.</strong> MaisMEI tiene 4M de MEIs pero cero gestión financiera y cero contador. Nibo tiene a los contadores (es nuestra referencia declarada para Connect) pero no tiene al MEI en el bolsillo. ContaAzul y Bling no son MEI-first. Zymplo con <strong>Zy en el WhatsApp del MEI + Connect del contador</strong> es la única red de dos lados del mercado. Esa es la tesis a defender y acelerar.
+  </div>
+
+  <h2>1 · El tablero</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th>Jugador</th><th>Vende a</th><th>Entrada</th><th>Fuerza</th><th>Flanco débil</th></tr>
+      <tr><td>Zymplo</td><td>MEI directo (gratis) + contador (Connect)</td><td class="num">MEI gratis</td><td>Único WhatsApp-AI-first en ambos lados</td><td>Boleto, cuenta PJ, servicios fiscales one-off</td></tr>
+      <tr><td>Nibo</td><td>Contador (canal) + SMB</td><td class="num">R$ 166/mes</td><td>Radar e-CAC · white-label MeuApp · Obrigações</td><td>Soporte ~29 días · fallas NFS-e · caro p/ MEI</td></tr>
+      <tr><td>MaisMEI</td><td>MEI directo · 4M usuarios · ahora Visma</td><td class="num">Gratis + one-offs</td><td>Freemium fiscal masivo + marketplace financiero</td><td>Sin cobranza/conciliación · sin contador</td></tr>
+      <tr><td>ContaAzul</td><td>ME/EPP + contador como canal</td><td class="num">R$ 159,90/mes</td><td>Cuenta PJ propia · integración contable · IA captura</td><td>Trial 3 días · reajustes abusivos (RA ~6,8)</td></tr>
+      <tr><td>Bling</td><td>Pymes e-commerce</td><td class="num">R$ 60/mes</td><td>+250 integraciones · logística · NF ilimitadas</td><td>App ~2★ · contador solo-lectura · soporte rígido</td></tr>
+    </table>
+  </div>
+
+  <h2>2 · Matriz de features</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th>Feature</th><th>Zymplo</th><th>MaisMEI</th><th>Nibo</th><th>ContaAzul</th><th>Bling</th></tr>
+      <tr><td>Bot IA por WhatsApp (MEI)</td><td class="ok">✅ core</td><td class="no">—</td><td class="mid">~ escritório</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Emisión NFS-e</td><td class="ok">✅ SEFIN nacional</td><td class="ok">✅ gratis (ciudades lim.)</td><td class="ok">✅</td><td class="ok">✅ +NF-e/NFC-e</td><td class="ok">✅ ilimitada</td></tr>
+      <tr><td>DAS: recordatorio / guía / status</td><td class="mid">~ reminder + status</td><td class="ok">✅ guía copia-cola</td><td class="ok">✅ recálculo auto</td><td class="mid">~</td><td class="mid">~</td></tr>
+      <tr><td>DASN (declaración anual)</td><td class="no">—</td><td class="ok">✅ R$ 73,15</td><td class="mid">~</td><td class="mid">~</td><td class="no">—</td></tr>
+      <tr><td>Regularización DAS / parcelamiento</td><td class="no">—</td><td class="ok">✅ 60 cuotas</td><td class="mid">~</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>CCMEI / Cartão CNPJ al instante</td><td class="no">—</td><td class="ok">✅</td><td class="mid">~</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Cobranza con recordatorios</td><td class="ok">✅ PIX + WhatsApp</td><td class="no">—</td><td class="ok">✅ boletos</td><td class="ok">✅ + recurrente</td><td class="mid">~</td></tr>
+      <tr><td>Boleto bancario</td><td class="no">—</td><td class="no">—</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+      <tr><td>Cuenta PJ integrada</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="ok">✅ propia</td><td class="ok">✅ gratuita</td></tr>
+      <tr><td>Conciliación / Open Finance</td><td class="ok">✅ Pluggy (nuevo)</td><td class="no">—</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+      <tr><td>Monitoreo fiscal masivo (e-CAC/CND)</td><td class="no">—</td><td class="no">—</td><td class="ok">✅ Radar e-CAC</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Portal contador con cartera</td><td class="ok">✅ Connect LIVE</td><td class="no">—</td><td class="ok">✅ (referencia)</td><td class="ok">✅ gratis</td><td class="mid">~ solo XML</td></tr>
+      <tr><td>White-label del contador</td><td class="mid">~ branding portal</td><td class="no">—</td><td class="ok">✅ app móvil</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Canal MEI↔contador</td><td class="mid">~ construido (dark)</td><td class="no">—</td><td class="mid">~</td><td class="mid">~</td><td class="no">—</td></tr>
+      <tr><td>Comisión al contador</td><td class="mid">~ 102-BIS propuesto</td><td class="no">—</td><td class="ok">✅ c/4 meses</td><td class="mid">~ dcto. licencias</td><td class="ok">✅ 10% × 12m</td></tr>
+      <tr><td>Marketplace financiero (crédito)</td><td class="no">—</td><td class="ok">✅ Santander/C6/Zippi</td><td class="no">—</td><td class="mid">~</td><td class="mid">~</td></tr>
+      <tr><td>Gamificación / educación</td><td class="ok">✅</td><td class="mid">~ contenido</td><td class="no">—</td><td class="mid">~</td><td class="no">—</td></tr>
+    </table>
+  </div>
+
+  <h2>3 · Oportunidades priorizadas</h2>
+
+  <div class="card">
+    <h3><span class="pill money">Monetización</span> 1. DASN-SIMEI como servicio pago</h3>
+    <p>MaisMEI cobra <strong>R$ 73,15</strong> por la declaración anual y es su producto estrella sobre 4M de usuarios gratis. Nosotros ya tenemos los datos del año del MEI cargados en el bot → podemos <strong>pre-llenarla</strong>. Es EL modelo probado de monetizar un MEI gratis sin mensualidad (validado con la compra de MaisMEI por Visma).</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill win">Quick win</span> 2. CCMEI / Cartão CNPJ + guía DAS copia-e-cola por el bot</h3>
+    <p>Consultas a APIs públicas que MaisMEI usa como core de retención. "Zy, mandame mi CCMEI" y el código de barras del DAS en el chat cierran el loop recordar→pagar. Semanas de esfuerzo, mayormente del lado del bot.</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill money">Monetización</span> 3. Regularización / parcelamiento de DAS atrasadas</h3>
+    <p>Mismo patrón que DASN: dolor alto, servicio one-off, mercado ya educado por MaisMEI (hasta 60 cuotas, "50% de descuento en multas").</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill strat">Connect</span> 4. Radar fiscal de cartera (estilo e-CAC)</h3>
+    <p>El feature killer de Nibo para escritórios: monitoreo fiscal masivo de CNPJs (DAS/DARF, CND, caixa postal e-CAC). Versión mínima nuestra: status DAS/DASN de toda la cartera con alertas — <strong>la cartera y el DAS status ya están LIVE en Connect</strong>; el diferencial es conectar e-CAC.</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill strat">Connect</span> 5. Ratificar y comunicar la comisión 102-BIS</h3>
+    <p>Benchmark real: Bling paga <strong>10% × 12 meses</strong>, Nibo paga comisión cada 4 meses, ContaAzul solo descuenta licencias. Nuestro <strong>20% recurrente cap 12m</strong> gana en la comparación y es argumento de captación de contadores. El bloqueo es legal/riel Pix-OUT (ya mapeado), no de mercado.</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill money">Monetización</span> 6. Marketplace financiero (crédito / seguros)</h3>
+    <p>MaisMEI monetiza refiriendo crédito a Santander/C6/Zippi. Con Open Finance recién prendido tenemos <strong>mejor data de scoring</strong> para revenue share con fintechs.</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill strat">Connect</span> 7. White-label móvil del contador</h3>
+    <p>Nibo publica apps con la marca de cada escritório (MeuApp). Tenemos branding en el portal; el siguiente paso natural es la versión móvil — o mínimo, el bot respondiendo "en nombre de" la marca del contador.</p>
+  </div>
+  <div class="card">
+    <h3><span class="pill win">Quick win</span> 8. Explotar el flanco soporte en marketing</h3>
+    <p>Nibo responde reclamos en ~29 días; Bling contesta "es así como funciona". Nuestro soporte ES un bot IA en WhatsApp — es un argumento de venta medible (tiempo de respuesta).</p>
+  </div>
+
+  <h3>Qué NO perseguir</h3>
+  <ul>
+    <li><strong>Marketplaces / stock / logística</strong> — moat de Bling, otro segmento.</li>
+    <li><strong>Cuenta PJ propia</strong> — ContaAzul y Bling la tienen; para nosotros es partnership (BaaS), no build.</li>
+    <li>Único gap estructural de cobranza BR que vale evaluar: <strong>boleto bancario</strong> (B2B lo pide; PIX cubre el resto).</li>
+  </ul>
+
+  <div class="callout warn">
+    <span class="tag">Amenaza con reloj</span>
+    <strong>MaisMEI + Visma</strong>: 4M usuarios, ahora con capital nórdico y roadmap acelerado (adquisición confirmada feb-2026). Si agregan cobranza + WhatsApp antes de que nosotros agreguemos DASN/regularización, nos comen el diferencial B2C. La ventana para las oportunidades 1-3 es ahora.
+  </div>
+
+  <h2>4 · Nuestra línea base (estado real Connect · 28/07/2026)</h2>
+  <ul>
+    <li><strong>LIVE en prod</strong> (connect.zymplo.com): dashboard del contador con KPIs de cartera y "MEIs que precisan atención", marcar DAS pago, persistencia de cartera + branding white-label + auditoría, drill-down NFS-e por MEI.</li>
+    <li><strong>Construido pero apagado (dark)</strong>: canal de consulta MEI↔contador (3 ambientes), motor de comisión 102-BIS (solo tracking, endpoint de pago fail-closed 501), sesión Redis en QA.</li>
+    <li><strong>Del lado del MEI</strong>: app + Zy por WhatsApp — cobranzas con recordatorios, recibos, gastos por foto, PIX, emisión NFS-e, recordatorio DAS, agenda con Google Calendar, marketing studio, leads, gamificación, open finance (Pluggy BR recién habilitado).</li>
+    <li><strong>Bloqueadores del pago real de comisión</strong> (decisiones, no técnica): encaje legal BACEN, contrato de parceria, riel Pix-OUT.</li>
+  </ul>
+
+  <h2>5 · Detalle por competidor</h2>
+
+  <details>
+    <summary>Nibo — el benchmark del canal contador</summary>
+    <div class="body">
+      <p><strong>Modelo:</strong> doble canal — escritórios contábeis (venta consultiva, precio "sob medida" por CNPJs) + empresas SMB directo. El contador es el canal de distribución central.</p>
+      <p><strong>Precios plan empresa (jul-2026):</strong></p>
+      <div class="tablewrap"><table>
+        <tr><th>Plan</th><th>Anual</th><th>Mensual</th><th>Incluye</th></tr>
+        <tr><td>Light</td><td class="num">R$ 166/mes</td><td class="num">R$ 208/mes</td><td>NFS-e + automatización, contas a pagar/receber, boletos automáticos</td></tr>
+        <tr><td>Plus</td><td class="num">R$ 250/mes</td><td class="num">R$ 312/mes</td><td>+ rateio, permisos, centros de costo, análisis V/H</td></tr>
+        <tr><td>Premium</td><td class="num">R$ 383/mes</td><td class="num">R$ 479/mes</td><td>+ presupuesto, boletos en lote, Central de Cobranças, API</td></tr>
+      </table></div>
+      <p><strong>Features clave:</strong> Radar e-CAC (monitoreo fiscal masivo de CNPJs contra Receita: DARFs, DAS, parcelamentos, CND a R$ 1 por certidão, caixa postal), Nibo Obrigações (robótica que clasifica documentos y recalcula DAS/DARF), Conciliador Open Finance, WhatsApp centralizado del escritório, <strong>MeuApp white-label</strong> (apps publicadas en Play con la marca de cada escritório), Importador Universal, API.</p>
+      <p><strong>Programa de partners:</strong> gratuito, 5 niveles por puntos (Bronze→Diamante), 30-50% de descuento en licencias según nivel, comisión al contador cuando el cliente contrata directo (pagadera cada 4 meses), directorio "Achar Contadores" como canal de leads.</p>
+      <p><strong>Debilidades:</strong> Reclame Aqui nota 6,4, <strong>~29 días</strong> de tiempo de respuesta, 65% resueltos; quejas por fallas de emisión NFS-e, portal caído, soporte "inoperante", cobros post-cancelación. Sin plan gratis; entrada cara para micro.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>MaisMEI — el benchmark B2C del MEI (4M usuarios · Visma)</summary>
+    <div class="body">
+      <p><strong>Modelo:</strong> 100% B2C al MEI, sin contador. Core gratis (guías DAS con copia-e-cola + recordatorios, NFS-e gratis, CCMEI/Cartão CNPJ al instante, consulta beneficios INSS) monetizado con <strong>servicios one-off</strong>: DASN-SIMEI "desde R$ 73,15", apertura de CNPJ, parcelamiento de deudas hasta 60 cuotas, certificado e-CNPJ A1, baixa/alterações. Más <strong>marketplace financiero</strong> (~15 partners: Santander, C6, Zippi — crédito, tarjetas, seguros, salud).</p>
+      <p><strong>Trayectoria:</strong> fundada 2020 bootstrapped, R$ 13M facturados en 2022 (+225%), <strong>adquirida por Visma</strong> (confirmado feb-2026). Apps 4,8★, Reclame Aqui 8,2 con respuesta en ~2 días.</p>
+      <p><strong>Debilidades:</strong> sin gestión financiera (cero cobranza, conciliación, flujo de caja), sin WhatsApp como producto, sin IA promocionada, NFS-e histórica limitada a pocas ciudades (expandiendo vía NFS-e nacional), quejas por confusión de cobro en apertura de CNPJ. <strong>Un MEI que crece se les escapa — ahí entramos nosotros.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>ContaAzul — el ERP del contador para ME/EPP</summary>
+    <div class="body">
+      <p><strong>Modelo:</strong> ERP financiero-fiscal con el contador como canal; pricing por rango de facturación anual (piden CNPJ para recomendar plan).</p>
+      <p><strong>Precios (jul-2026):</strong> Essencial <span class="num">R$ 159,90/mes</span> (MEI) · Controle <span class="num">R$ 309,90</span> (ME) · Avançado <span class="num">R$ 399,90</span> (EPP) · Performance <span class="num">R$ 719,90</span>. <strong>Trial de solo 3 días</strong>, sin plan gratis. Licencias con descuento para contadores partners (Pro R$ 199,90, Pro BPO R$ 129,90).</p>
+      <p><strong>Features clave:</strong> NF-e/NFS-e/NFC-e, <strong>cuenta PJ propia</strong> (institución de pago) con boleto/PIX/link, conciliación automática, cobranza recurrente (contratos), IA de captura de notas y lanzamientos, +100 integraciones, exportación a +25 sistemas contables, portal del contador gratis (Conta Azul Mais), programa de partners de 6 niveles.</p>
+      <p><strong>Debilidades:</strong> Reclame Aqui ~6,8 con quejas dominantes de <strong>reajustes de +54% en renovación</strong>, renovación automática sin avisar el nuevo valor, cancelación difícil; app móvil 4,1★ Play; entrada cara para MEI.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Bling — el ERP del e-commerce (grupo Locaweb)</summary>
+    <div class="body">
+      <p><strong>Modelo:</strong> ERP multicanal para vender online; planes por volumen de pedidos importados de marketplaces.</p>
+      <p><strong>Precios (jul-2026, post-reestructuración abril):</strong> Cobalto <span class="num">R$ 60/mes</span> (200 pedidos) · Titânio desde <span class="num">R$ 120/mes</span> · Diamante <span class="num">R$ 650/mes</span> · Elite a medida. <strong>Trial 30 días</strong>, NF ilimitadas en todos los planes.</p>
+      <p><strong>Features clave:</strong> +250 integraciones de marketplaces (Mercado Livre, Shopee, Amazon, iFood, TikTok Shop…), logística end-to-end (Bling Envios), stock multicanal/multi-depósito, cuenta digital PJ gratuita, tienda virtual nativa, PDV, SPED.</p>
+      <p><strong>Contadores:</strong> débil — "Espaço do Contador" es solo descarga de XMLs/reportes. Partners genéricos: <strong>10% de comisión × primeras 12 mensualidades</strong> del referido.</p>
+      <p><strong>Debilidades:</strong> app móvil ~2★ (fuente secundaria), soporte rígido, inestabilidad que compromete emisión de NF, ruido por reestructuraciones anuales de planes. Reclame Aqui 8,3 (buena).</p>
+    </div>
+  </details>
+
+  <p class="footer-note">Relevamiento: sitios oficiales de pricing, Reclame Aqui, Google Play/App Store, Forbes, blog MaisMEI/Visma y helps oficiales (jul-2026). Con reserva: faixas exactas de Bling Titânio post-abril-2026 y nota verificada del app de Bling (fuente secundaria). Línea base Zymplo: página interna de alcance de Connect (28/07/2026). Documento de trabajo interno — no distribuir fuera del equipo.</p>
+</main>
+</body>
+</html>
